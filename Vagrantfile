@@ -27,13 +27,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define MACHINE_HOSTNAME do |machine|
     machine.vm.hostname = MACHINE_HOSTNAME
-    machine.vm.network :public_network, ip: "172.16.27.196", :netmask => '255.255.0.0'
+    machine.vm.network :public_network, ip: "172.16.27.196", netmask:"255.255.0.0"
   end
 
   # fix for bug centos vagrant 1.9.1 and plugin that lets interface down
   # https://github.com/mitchellh/vagrant/issues/8115
   config.vm.provision "shell", inline: "sudo /etc/init.d/network restart", run: "always"
 
-  config.vm.provision "shell", inline: "bash /vagrant/provision.sh"
+  config.vm.provision "shell", inline: "bash /vagrant/provision.sh", privileged: false
 
 end
