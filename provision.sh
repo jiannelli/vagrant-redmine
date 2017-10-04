@@ -19,7 +19,6 @@ sudo yum -y install ruby
 
 #mysql
 sudo yum -y install mariadb-server
-sudo service mariadb restart
 
 #mysq secure installation recommended
 #mysql_secure_installation
@@ -91,10 +90,7 @@ cp /vagrant/files/Gemfile.local .
 /usr/local/bin/bundle exec rake generate_secret_token
 
 #Generate database tables
-RAILS_ENV=production bundle exec rake db:migrate
-
-#use full paths in case of path issues
-#RAILS_ENV=production /usr/local/bin/bundle exec bin/rake db:migrate
+RAILS_ENV=production /usr/local/bin/bundle exec rake db:migrate
 
 ##Load database with test data (if needed)
 #export REDMINE_LANG="es"
