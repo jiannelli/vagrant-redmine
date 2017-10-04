@@ -1,0 +1,35 @@
+[Unit]
+Description=Redmine con el servidor Puma HTTP Server
+After=network.target
+
+# Uncomment for socket activation (see below)
+# Requires=puma.socket
+
+[Service]
+# Foreground process (do not use --daemon in ExecStart or config.rb)
+Type=simple
+
+# Preferably configure a non-privileged user
+User=vagrant
+
+# The path to the puma application root
+# Also replace the "<WD>" place holders below with this path.
+WorkingDirectory=/opt/redmine
+
+# Helpful for debugging socket activation, etc.
+# Environment=PUMA_DEBUG=1
+
+# The command to start Puma. This variant uses a binstub generated via
+# `bundle binstubs puma --path ./sbin` in the WorkingDirectory
+# (replace "<WD>" below)
+#ExecStart=<WD>/sbin/puma -b tcp://0.0.0.0:9292 -b ssl://0.0.0.0:9293?key=key.pem&cert=cert.pem
+
+# Variant: Use config file with `bind` directives instead:
+# ExecStart=<WD>/sbin/puma -C config.rb
+# Variant: Use `bundle exec --keep-file-descriptors puma` instead of binstub
+ExecStart=/opt/redmine/bin/bundle exec /opt/redmine/bin/puma --environment production -b tcp://0.0.0.0:9292
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+# Gemfile.local
+# Fix to avoid centos bug with bundler usage
+# http://www.redmine.org/issues/25241
+gem 'json'
+
+# puma webserver
+gem 'puma'
+
