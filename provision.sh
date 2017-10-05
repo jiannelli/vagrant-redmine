@@ -148,9 +148,7 @@ sudo systemctl start puma.service
 sudo systemctl status puma.service
 
 
-
-#Apacha as reverse proxy using port 80
-
+#Apache as a reverse proxy using port 80
 sudo yum -y install httpd
 
 #configuration
@@ -159,4 +157,3 @@ sudo cp /vagrant/files/puma-reverseproxy.conf /etc/httpd/conf.d/reverseproxy.con
 sudo service httpd start
 #enable service on startup
 sudo systemctl enable httpd
-
