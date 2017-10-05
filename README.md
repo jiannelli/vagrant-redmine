@@ -10,7 +10,7 @@ The file [provision.sh](provision.sh) includes all the steps to install redmine.
 ## Usage
 Clone the repository
 
-`git clone git@github.com:jiannelli/vagrant-redmine.git vagrant-redmine`
+`git clone https://github.com/jiannelli/vagrant-redmine.git vagrant-redmine`
 
 Start the machine and provision it
 
